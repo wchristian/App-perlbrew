@@ -1458,6 +1458,7 @@ sub installed_perls {
         my ($name) = $_ =~ m/\/([^\/]+$)/;
         my $executable = joinpath($_, 'bin', 'perl');
         my $orig_version = `$executable -e 'print \$]'`;
+        die "Could not get a perl version." if !$orig_version;
 
         push @result, {
             name        => $name,
